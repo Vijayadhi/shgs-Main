@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    'aasc-st-asmt-manager.onrender.com',
+    'shgs.onrender.com',
     '35.160.120.126',
     '44.233.151.27',
     '34.211.200.85',
