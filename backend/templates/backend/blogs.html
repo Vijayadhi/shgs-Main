@@ -1,0 +1,61 @@
+{% extends "backend/index.html" %}
+{% load static %}
+{% block content %}
+    <main role="main">
+        <!-- TOP SECTION -->
+        <header class="grid">
+            <div class="s-12 padding-2x">
+                <h1 class="text-strong text-white text-center center text-size-60 text-uppercase margin-bottom-20">Our
+                    Blogs</h1>
+                <p class="text-size-20 text-white text-center center text-uppercase">Con nonummy sem integer interdum
+                    volutpat dis eget eligendi aliquip dolorum magnam. Iriure duis autem vel<br> eum dolor in hendrerit
+                    in vulputate velit esse molestie consequat.</p>
+            </div>
+        </header>
+
+
+        <!-- SECTION 1 -->
+        {% for blog in blogs %}
+            {% if blog.id|divisibleby:2 != 0 %}
+            <section class="grid">
+                <div class="m-12 l-6 padding-2x background-white">
+                    <p class="text-strong text-size-80 text-red">{{ forloop.counter }}</p>
+
+                    <h2 class="text-size-50 text-line-height-1 text-dark"><b>{{ blog.title }}</b>
+                    </h2>
+
+                    <p>{{ blog.services }}</p>
+                    <p>{{ blog.description}} </p>
+                </div>
+
+                <!-- Image-->
+                <img class="m-12 l-6" src="{{ blog.image.url }}">
+            </section>
+            {% else %}
+
+            <!-- SECTION 2 -->
+            <section class="grid">
+                <!-- Image-->
+                <img class="m-12 l-6" src="{{ blog.image.url }}">
+
+                <div class="m-12 l-6 padding-2x background-dark">
+                    <p class="text-strong text-size-80 text-red">{{ forloop.counter }}</p>
+
+                    <h2 class="text-size-50 text-line-height-1 margin-bottom-30 text-white"><b>{{ blog.title }}</b></h2>
+
+                    <h3 class="font-weight-bold">{{ blog.services}}</h3>
+                    <p>{{ blog.description}}</p>
+                </div>
+            </section>
+            {% endif %}
+
+        {% endfor %}
+        <!-- SECTION 6 -->
+        <section class="grid margin-bottom">
+            <div class="s-12 padding-2x background-dark">
+                <a href="/contactUs" class="s-12 m-9 l-3 center button text-size-20 text-white background-red">CONTACT
+                    US</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

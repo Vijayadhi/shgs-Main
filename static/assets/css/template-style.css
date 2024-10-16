@@ -1424,7 +1424,7 @@ section, header {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
+  width: 50%;
   right: 0;
   left: 0; 
   z-index: -1;
@@ -1502,7 +1502,7 @@ section, header {
     padding: 30px !important;
   }
 } 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   .background-image {
     background-position: center;
   }

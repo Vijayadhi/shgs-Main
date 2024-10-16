@@ -6,6 +6,8 @@ class Services(models.Model):
     id = models.BigAutoField(primary_key=True)
     service_title = models.CharField(max_length=255, unique=True)
     short_description = models.TextField()
+    image = models.ImageField(upload_to='services/')
+
 
     class Meta:
         db_table = 'services'
@@ -16,7 +18,7 @@ class Blog(models.Model):
     id = models.BigAutoField(primary_key=True)
     services = models.ForeignKey(Services, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True)
-    image = models.ImageField(upload_to='media/images/')
+    image = models.ImageField(upload_to='images/')
     description = models.TextField()
 
     class Meta:
