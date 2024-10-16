@@ -25,14 +25,14 @@ SECRET_KEY = 'django-insecure--wry&6omnh(-zgbun0dpb$ju=y7e*^)@-d-_0ot*uc(93!+i3h
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # '0.0.0.0',
-    # 'shgs.onrender.com',
+    '0.0.0.0',
+    'shgs.onrender.com',
     '127.0.0.1'
-    # '35.160.120.126',
-    # '44.233.151.27',
-    # '34.211.200.85',
-    # # '0.0.0.0/0',
-    # '0.0.0.0/0'
+    '35.160.120.126',
+    '44.233.151.27',
+    '34.211.200.85',
+    # '0.0.0.0/0',
+    '0.0.0.0/0'
 ]
 
 # Application definition
