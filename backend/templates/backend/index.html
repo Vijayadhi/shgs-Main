@@ -111,8 +111,8 @@ You can use this class:
         <div class="top-nav s-12 l-9">
             <ul class="top-ul right chevron">
                 <li><a href="/">Home</a></li>
-{#                <li><a>About Us</a></li>#}
-                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/gallery/">Gallery</a></li>
+                <li><a href="/blogs/">Blogs</a></li>
                 <li><a href="/contactUs/">Contact</a></li>
                 <li><a href="/admin/login/" target="_blank">Admin Login</a></li>
 
@@ -130,7 +130,17 @@ You can use this class:
     <!-- Footer - top -->
     <!-- Image-->
     <div class="s-12 l-3 m-row-3 margin-bottom background-image"
-         style="background-image:url({% static 'assets/logo/lh.jpg' %}); height: 500px"></div>
+         style="background-image: url({% static 'assets/logo/lh.jpg' %});
+                 height: 500px;
+                 background-size: cover;
+                 background-position: center;
+                 width: 100%;
+                 max-width: 1600px;
+                 margin: 0 auto;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;">
+    </div>
 
     <div class="s-12 m-9 l-3 padding-2x margin-bottom background-dark">
         <h2 class="text-strong text-uppercase">Who We Are?</h2>

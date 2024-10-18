@@ -223,6 +223,7 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "backend.Blog": "fa-brands fa-blogger",
         "backend.Services": "fa-brands fa-servicestack",
+        "backend.Gallery": "fa-solid fa-images"
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -273,6 +274,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-LOGIN_REDIRECT_URL = 'dashboard'  # Redirect to 'home' after login
+LOGIN_REDIRECT_URL = '/admin'  # Redirect to 'home' after login
 
 CSRF_COOKIE_DOMAIN = 'shgs.onrender.com'  # Include the dot for subdomains
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://shgs.onrender.com',
+]

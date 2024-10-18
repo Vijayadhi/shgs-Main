@@ -1,0 +1,19 @@
+{% extends "backend/index.html" %}
+
+{% load static %}
+{% block content %}
+    <div class="s-12 padding-2x">
+        <h1 class="text-strong text-white text-center center text-size-60 text-uppercase margin-bottom-20">Our References</h1>
+        <p class="text-size-20 text-white text-center center text-uppercase">Con nonummy sem integer interdum volutpat
+            dis eget eligendi aliquip dolorum magnam. Iriure duis autem vel<br> eum dolor in hendrerit in vulputate
+            velit esse molestie consequat.</p>
+    </div>
+
+    <section class="grid margin">
+        {% for gallery in galleries %}
+            <img class="s-12 m-6 margin-bottom" src="{{ gallery.image.url }}" alt="{{ gallery.title }}"/>
+        {% empty %}
+{#            <p class="text-size-20 text-white text-center" style="text-align: center">No images available in the gallery.</p>#}
+        {% endfor %}
+    </section>
+{% endblock %}

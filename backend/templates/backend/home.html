@@ -4,143 +4,78 @@
 {% block content %}
     <main role="main">
         <!-- TOP SECTION -->
-<section class="grid">
-    <!-- Main Carousel -->
-    <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
-        {% for service in services %}
-        <div class="item"
-             style="background-image:url({{ service.image.url }}); width: inherit">
-{#            <p class="text-padding text-strong text-white text-s-size-30 text-size-40 text-uppercase background-primary">#}
-{#                {{ service.service_title }}#}
-{#            </p>#}
-{#            <p class="text-padding text-size-20 text-dark text-uppercase background-white">#}
-{#                {{ service.short_description }}#}
-{#            </p>#}
-        </div>
-        {% endfor %}
-    </div>
-</section>        <br>
-        <!-- SECTION 1 -->
+        <section class="grid">
+            <!-- Main Carousel -->
+            <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
+                {% for service in services %}
+                    <div class="item"
+                         style="background-image:url({{ service.image.url }}); background-size: cover; background-position: center; width: 100%; height: 500px;">
+                        {#                <div class="carousel-content">#}
+                        {#                    <p class="text-padding text-strong text-white text-s-size-30 text-size-40 text-uppercase">{{ service.service_title }}</p>#}
+                        {#                    <p class="text-padding text-size-20 text-dark text-uppercase background-white">{{ service.short_description }}</p>#}
+                        {#                </div>#}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <br>
+
+
         <section class="grid margin text-center">
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
-                <div class="icon-container"
-                     style="display: flex; justify-content: center; align-items: center; background: none;">
+                <div class="icon-container">
                     <img src="{% static 'assets/icons/online-shopping.gif' %}" alt="Omega Computer & Software Solutions"
-                         style="height: 70px; max-width: 100%; object-fit: contain;">
-                </div>
+                         style="height: 70px; width: auto;">
+                    {#                             <i class="icon-sli-equalizer text-size-60 text-white center margin-bottom-15"></i>#}
 
-                {#            <i class="icon-sli-equalizer text-size-60 text-white center margin-bottom-15"></i>#}
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase"><br>Omega
-                    Computer &
+                </div>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Omega Computer &
                     Software Solutions</h3>
             </a>
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
-                <div class="icon-container"
-                     style="display: flex; justify-content: center; align-items: center; background: none;">
+                <div class="icon-container">
                     <img src="{% static 'assets/icons/property.gif' %}" alt="Housing Loan & Real Estate"
-                         style="height: 70px; max-width: 100%; object-fit: contain;">
+                         style="height: 70px; width: auto;">
+
                 </div>
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase"
-                    style="padding-top: 15px">Sri Hayagiriva Housing Loan<br> & <br> Real Estates</h3>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Housing Loan &
+                    Real Estate</h3>
             </a>
 
             <!-- Image-->
-            {#        <img class="m-12 l-6 l-row-2 margin-bottom" src="{% static 'assets/img/img-06.jpg' %}">#}
+            {#          <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-06.jpg">#}
 
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
-                <div class="icon-container"
-                     style="display: flex; justify-content: center; align-items: center; background: none;">
+                <div class="icon-container">
                     <img src="{% static 'assets/icons/medical-consultation.gif' %}" alt="Wellness & Nutrition Center"
-                         style="height: 70px; max-width: 100%; object-fit: contain;">
+                         style="height: 70px; width: auto;">
+
                 </div>
                 <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Wellness &
-                    Nutrition
-                    Center</h3>
+                    Nutrition Center</h3>
             </a>
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
-                <div class="icon-container"
-                     style="display: flex; justify-content: center; align-items: center; background: none;">
+                <div class="icon-container">
                     <img src="{% static 'assets/icons/love-birds.gif' %}" alt="Sri Hayagiriva Matrimony Services"
-                         style="height: 70px; max-width: 100%; object-fit: contain;">
+                         style="height: 70px; width: auto;">
                 </div>
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase"
-                    style="padding-top: 15px"><br>Sri Hayagiriva Matrimony<br> & <br> Marraiage Resitration</h3>
+
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Sri Hayagiriva
+                    Matrimony&<br> Marriage Registration Services</h3>
             </a>
         </section>
 
         <!-- SECTION 2 -->
         <section class="grid section margin-bottom background-dark">
             <h2 class="s-12 l-6 center text-thin text-size-40 text-white text-uppercase margin-bottom-30"><b>Sri
-                Hayagiriva
-                Group of Services</b></h2>
+                Hayagiriva Group of Services</b></h2>
             <p class="s-12 l-6 center">"At Sri Hayagiriva Group of Services, we seamlessly blend astrology, innovative
                 software solutions, and comprehensive housing loan assistance with expert real estate guidance and
                 personalized matrimony services, ensuring a holistic approach to your life's needs".</p>
         </section>
 
-        {#    <!-- SECTION 3 -->#}
-        {#    <section class="grid margin">#}
-        {#        <!-- Image-->#}
-        {#        <img class="s-12 m-6 margin-bottom" src="{% static 'assets/img/img-01.jpg' %}">#}
-        {##}
-        {#        <div class="s-12 m-6 padding-2x margin-bottom background-blue">#}
-        {#            <h2 class="text-strong text-size-50 text-line-height-1">Nonummy nibh euismod tincidunt ut laoreet<br> massa#}
-        {#                nec orci accusamus auctor aute</h2>#}
-        {#            <ul>#}
-        {#                <li>Sed diam nonummy nibh euismod tincidunt ut laoreet</li>#}
-        {#                <li>Dolore magna aliquam erat volutpat</li>#}
-        {#                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</li>#}
-        {#                <li>Sed diam nonummy nibh euismod tincidunt ut laoreet</li>#}
-        {#                <li>Dolore magna aliquam erat volutpat</li>#}
-        {#            </ul>#}
-        {#        </div>#}
-        {#    </section>#}
-        {##}
-        {#    <!-- SECTION 4 -->#}
-        {#    <h2 class="s-12 text-white text-thin text-size-30 text-white text-uppercase margin-top-bottom-40 center text-center">#}
-        {#        Top <b>References</b></h2>#}
-        {#    <section class="grid margin">#}
-        {#        <div class="s-12 m-6 margin-bottom image-container">#}
-        {#            <a href="gallery.html">#}
-        {#                <img class="full-img" src="{% static 'assets/img/portfolio/thumb-01.jpg' %}" alt=""/>#}
-        {#                <div class="overlay">#}
-        {#                    <h3><strong>Project Title 1</strong></h3>#}
-        {#                    <a href="gallery.html" class="button learn-more">Learn More</a>#}
-        {#                </div>#}
-        {#            </a>#}
-        {#        </div>#}
-        {#        <div class="s-12 m-6 margin-bottom image-container">#}
-        {#            <a href="gallery.html">#}
-        {#                <img class="full-img" src="{% static 'assets/img/portfolio/thumb-02.jpg' %}" alt=""/>#}
-        {#                <div class="overlay">#}
-        {#                    <h3><strong>Project Title 2</strong></h3>#}
-        {#                    <a href="gallery.html" class="button learn-more">Learn More</a>#}
-        {#                </div>#}
-        {#            </a>#}
-        {#        </div>#}
-        {#        <div class="s-12 m-6 margin-bottom image-container">#}
-        {#            <a href="gallery.html">#}
-        {#                <img class="full-img" src="{% static 'assets/img/portfolio/thumb-03.jpg' %}" alt=""/>#}
-        {#                <div class="overlay">#}
-        {#                    <h3><strong>Project Title 3</strong></h3>#}
-        {#                    <a href="gallery.html" class="button learn-more">Learn More</a>#}
-        {#                </div>#}
-        {#            </a>#}
-        {#        </div>#}
-        {#        <div class="s-12 m-6 margin-bottom image-container">#}
-        {#            <a href="gallery.html">#}
-        {#                <img class="full-img" src="{% static 'assets/img/portfolio/thumb-04.jpg' %}" alt=""/>#}
-        {#                <div class="overlay">#}
-        {#                    <h3><strong>Project Title 4</strong></h3>#}
-        {#                    <a href="gallery.html" class="button learn-more">Learn More</a>#}
-        {#                </div>#}
-        {#            </a>#}
-        {#        </div>#}
-        {#    </section>#}
-
-
         <!-- SECTION 5 -->
-        <br>
         <section class="grid margin text-center">
             <div class="m-12 l-4 padding-2x background-dark margin-bottom text-right">
                 <h3 class="text-strong text-size-25 text-uppercase margin-bottom-10">Let's keep in touch</h3>
