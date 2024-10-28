@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '0.0.0.0',
     'shgs.onrender.com',
-    '127.0.0.1'
+    '127.0.0.1',
     '35.160.120.126',
     '44.233.151.27',
     '34.211.200.85',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'backend'
 ]
 
@@ -65,7 +66,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,18 +97,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 # Internationalization
@@ -196,9 +199,9 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
 
     # Hide these apps when generating side menu e.g (auth)
-    "hide_apps": [
-        'auth'
-    ],
+    # "hide_apps": [
+    #     'auth'
+    # ],
 
     # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [],
@@ -223,7 +226,8 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "backend.Blog": "fa-brands fa-blogger",
         "backend.Services": "fa-brands fa-servicestack",
-        "backend.Gallery": "fa-solid fa-images"
+        "backend.Gallery": "fa-solid fa-images",
+        "backend.CustomUser": "fas fa-user",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -274,6 +278,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
 LOGIN_REDIRECT_URL = '/admin'  # Redirect to 'home' after login
 
 CSRF_COOKIE_DOMAIN = 'shgs.onrender.com'  # Include the dot for subdomains
@@ -281,3 +293,15 @@ CSRF_COOKIE_DOMAIN = 'shgs.onrender.com'  # Include the dot for subdomains
 CSRF_TRUSTED_ORIGINS = [
     'https://shgs.onrender.com',
 ]
+
+AUTH_USER_MODEL = 'backend.CustomUser'
+from dotenv import load_dotenv
+load_dotenv()
+
+# Email configuration
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

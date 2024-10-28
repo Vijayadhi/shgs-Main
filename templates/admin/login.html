@@ -1,0 +1,265 @@
+{% load static %}
+{% block content %}
+    <html>
+    <head>
+        <title>ADMIN | Get In</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+            /* Your styles as provided */
+            @import url('https://rsms.me/inter/inter-ui.css');
+
+            ::selection {
+                background: #2D2F36;
+            }
+
+            ::-webkit-selection {
+                background: #2D2F36;
+            }
+
+            ::-moz-selection {
+                background: #2D2F36;
+            }
+
+            body {
+                background: white;
+                font-family: 'Inter UI', sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .page {
+                background: white;
+                display: flex;
+                flex-direction: column;
+                height: calc(100% - 40px);
+                position: absolute;
+                place-content: center;
+                width: calc(100% - 40px);
+            }
+
+            .container {
+                display: flex;
+                height: 320px;
+                margin: 0 auto;
+                width: 640px;
+            }
+
+            .left {
+                background: white;
+                height: calc(100% - 20px);
+                top: 20px;
+                position: relative;
+                width: 50%;
+                text-align: center; /* Center the logo */
+            }
+
+            .login {
+                font-size: 50px;
+                font-weight: 900;
+                margin: 50px 40px 40px;
+            }
+
+            .eula {
+                color: #999;
+                font-size: 14px;
+                line-height: 1.5;
+                margin: 40px;
+            }
+
+            .right {
+                background: #474A59;
+                box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+                color: #F1F1F2;
+                position: relative;
+                width: 50%;
+            }
+
+            svg {
+                position: absolute;
+                width: 320px;
+            }
+
+            path {
+                fill: none;
+                stroke: url(#linearGradient);
+                stroke-width: 4;
+                stroke-dasharray: 240 1386;
+            }
+
+            .form {
+                margin: 40px;
+                position: absolute;
+            }
+
+            label {
+                color: #c2c2c5;
+                display: block;
+                font-size: 14px;
+                height: 16px;
+                margin-top: 20px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                background: transparent;
+                border: 0;
+                color: #f2f2f2;
+                font-size: 20px;
+                height: 30px;
+                line-height: 30px;
+                outline: none !important;
+                width: 100%;
+            }
+
+            #submit {
+                color: #707075;
+                margin-top: 40px;
+                transition: color 300ms;
+                cursor: pointer;
+            }
+
+            #submit:hover {
+                color: #707075;
+            }
+
+            #submit:focus {
+                color: #f2f2f2;
+            }
+
+            #submit:active {
+                color: #d0d0d2;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            a {
+                color: white;
+                opacity: 30%;
+            }
+
+            a:hover {
+                color: #ff00ff; /* Change color on hover */
+                opacity: 0.75; /* Set opacity to 75% */
+                transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition effect */
+            }
+
+            .text-primary-hover {
+                color: black;
+                font-weight: 600;
+            }
+
+            .logo {
+                max-width: 200px; /* Adjust size as necessary */
+                margin-bottom: 20px; /* Space below the logo */
+            }
+
+
+            .password-container {
+                position: relative;
+                width: 100%;
+            }
+
+            .toggle-password {
+                position: absolute;
+                right: 10px;
+                top: 38%;
+                cursor: pointer;
+                color: #f2f2f2; /* Adjust color as necessary */
+            }
+        </style>
+    </head>
+    <body>
+    <div class="page">
+        <div class="container">
+            <div class="left">
+                <img src="{% static 'assets/logo/favico.jpeg' %}" alt="Site Logo"
+                     style="max-width: 75px; margin-top: 15px; border-radius: 20px">
+                <div class="login">Login</div>
+                <div class="eula">For Support Contact Developer <a
+                        href="https://www.instagram.com/code_addict.2004/profilecard/?igsh=ZXZiaDRxZjF3bzZm"
+                        class="text-primary-hover" target="_blank">Vijayadithyan</a></p>
+                </div>
+            </div>
+            <div class="right">
+                <svg viewBox="0 0 320 300">
+                    <defs>
+                        <linearGradient id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992"
+                                        gradientUnits="userSpaceOnUse">
+                            <stop style="stop-color:#ff00ff;" offset="0"/>
+                            <stop style="stop-color:#ff0000;" offset="1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"/>
+                </svg>
+                <div class="form">
+                    <form method="post" action="{% url 'admin:login' %}">
+                        {% csrf_token %}
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required>
+                        <label for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" name="password" id="password" required>
+                            <span class="toggle-password" id="toggle-password">
+                            <i class="fas fa-eye"></i> <!-- Eye icon -->
+                        </span>
+                        </div>
+                        <input type="submit" id="submit" value="Login">
+                        <p class="mt-3 text-center">
+                            <a href="{% url 'password_reset' %}" class="text-muted">Forgot your password?</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        var current = null;
+
+        // Add event listener for toggling password visibility
+        document.querySelector('#toggle-password').addEventListener('click', function () {
+            const passwordField = document.querySelector('#password');
+            const toggleIcon = this.querySelector('i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        });
+
+        // Existing anime.js code for focus animations...
+        document.querySelector('#username').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {value: 0, duration: 700, easing: 'easeOutQuart'},
+                strokeDasharray: {value: '240 1386', duration: 700, easing: 'easeOutQuart'}
+            });
+        });
+        document.querySelector('#password').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {value: -336, duration: 700, easing: 'easeOutQuart'},
+                strokeDasharray: {value: '240 1386', duration: 700, easing: 'easeOutQuart'}
+            });
+        });
+        document.querySelector('#submit').addEventListener('focus', function (e) {
+            if (current) current.pause();
+            current = anime({
+                targets: 'path',
+                strokeDashoffset: {value: -730, duration: 700, easing: 'easeOutQuart'},
+                strokeDasharray: {value: '530 1386', duration: 700, easing: 'easeOutQuart'}
+            });
+        });
+    </script>
+    </body>
+    </html>
+{% endblock %}
