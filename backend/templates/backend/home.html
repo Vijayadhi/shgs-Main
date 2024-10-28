@@ -2,100 +2,149 @@
 
 {% load static %}
 {% block content %}
+    <style>
+        /* Container styling for images, to ensure layout flexibility */
+        .s-12.carousel-main {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            justify-content: center;
+            gap: 10px; /* Optional spacing between items */
+        }
+
+        /* Responsive image with aspect ratio */
+        .responsive-image {
+            width: 50%; /* Full container width */
+            max-width: 50%; /* Prevent overflow */
+            height: auto; /* Preserve aspect ratio */
+            object-fit: cover; /* Cover container area */
+            border-radius: 15px; /* Optional rounded corners for better fit */
+            transition: transform 0.3s ease; /* Smooth scaling */
+        }
+
+        /* Optional scaling effect on hover */
+        .responsive-image:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .vertical-center:hover{
+            transform: scale(1.05);
+        }
+
+        /* Fine-tuned responsive adjustments for specific breakpoints */
+        @media (max-width: 1200px) {
+            .responsive-image {
+                max-height: 300px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .responsive-image {
+                max-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .responsive-image {
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .responsive-image {
+                max-height: 200px;
+                width: 750px;
+                justify-self: center;
+                align-self: center;
+                margin-left: 30px;
+                margin-top: 75px;
+            }
+        }
+
+        /* Disable right-click and dragging on images */
+        .image-container img {
+            -webkit-user-drag: none; /* Disable dragging */
+            user-drag: none;
+        }
+    </style>
+
     <main role="main">
         <!-- TOP SECTION -->
         <section class="grid">
             <!-- Main Carousel -->
             <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
-                {% for service in services %}
-                    <div class="item"
-                         style="background-image:url({{ service.image.url }}); background-size: cover; background-position: center; width: 100%; height: 500px;">
-                        {#                <div class="carousel-content">#}
-                        {#                    <p class="text-padding text-strong text-white text-s-size-30 text-size-40 text-uppercase">{{ service.service_title }}</p>#}
-                        {#                    <p class="text-padding text-size-20 text-dark text-uppercase background-white">{{ service.short_description }}</p>#}
-                        {#                </div>#}
+{#                {% for service in services %}#}
+                    <div class="image-container">
+                        <img src="{{ services.image.url }}" alt="{{ services.name }}" title="{{ services.name }}" class="responsive-image" oncontextmenu="return false;">
                     </div>
-                {% endfor %}
+{#                {% endfor %}#}
             </div>
         </section>
 
         <br>
 
-
         <section class="grid margin text-center">
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
                 <div class="icon-container">
-                    <img src="{% static 'assets/icons/online-shopping.gif' %}" alt="Omega Computer & Software Solutions"
-                         style="height: 70px; width: auto;">
-                    {#                             <i class="icon-sli-equalizer text-size-60 text-white center margin-bottom-15"></i>#}
-
+                    <img src="{% static 'assets/icons/online-shopping.gif' %}" alt="Omega Computer & Software Solutions" style="height: 70px; width: auto;">
                 </div>
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Omega Computer &
-                    Software Solutions</h3>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Omega Computer & Software Solutions</h3>
             </a>
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
                 <div class="icon-container">
-                    <img src="{% static 'assets/icons/property.gif' %}" alt="Housing Loan & Real Estate"
-                         style="height: 70px; width: auto;">
-
+                    <img src="{% static 'assets/icons/property.gif' %}" alt="Housing Loan & Real Estate" style="height: 70px; width: auto;">
                 </div>
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Housing Loan &
-                    Real Estate</h3>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Housing Loan & Real Estate</h3>
             </a>
-
-            <!-- Image-->
-            {#          <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-06.jpg">#}
-
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
                 <div class="icon-container">
-                    <img src="{% static 'assets/icons/medical-consultation.gif' %}" alt="Wellness & Nutrition Center"
-                         style="height: 70px; width: auto;">
-
+                    <img src="{% static 'assets/icons/medical-consultation.gif' %}" alt="Wellness & Nutrition Center" style="height: 70px; width: auto;">
                 </div>
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Wellness &
-                    Nutrition Center</h3>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Wellness & Nutrition Center</h3>
             </a>
             <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
                 <div class="icon-container">
-                    <img src="{% static 'assets/icons/love-birds.gif' %}" alt="Sri Hayagiriva Matrimony Services"
-                         style="height: 70px; width: auto;">
+                    <img src="{% static 'assets/icons/love-birds.gif' %}" alt="Sri Hayagiriva Matrimony Services" style="height: 70px; width: auto;">
                 </div>
-
-                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Sri Hayagiriva
-                    Matrimony&<br> Marriage Registration Services</h3>
+                <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Sri Hayagiriva Matrimony & Marriage Registration Services</h3>
             </a>
         </section>
 
         <!-- SECTION 2 -->
-        <section class="grid section margin-bottom background-dark">
-            <h2 class="s-12 l-6 center text-thin text-size-40 text-white text-uppercase margin-bottom-30"><b>Sri
-                Hayagiriva Group of Services</b></h2>
-            <p class="s-12 l-6 center">"At Sri Hayagiriva Group of Services, we seamlessly blend astrology, innovative
-                software solutions, and comprehensive housing loan assistance with expert real estate guidance and
-                personalized matrimony services, ensuring a holistic approach to your life's needs".</p>
-        </section>
+      <section class="grid section margin-bottom background-dark">
+    <h2 class="s-12 l-6 center text-thin text-size-40 text-white text-uppercase margin-bottom-30">
+        <b>{{ services.service_title }}</b>
+    </h2>
+    <div class="s-12 l-6 center">{{ services.short_description|safe }}</div>
+</section>
+
 
         <!-- SECTION 5 -->
         <section class="grid margin text-center">
             <div class="m-12 l-4 padding-2x background-dark margin-bottom text-right">
                 <h3 class="text-strong text-size-25 text-uppercase margin-bottom-10">Let's keep in touch</h3>
-                <p>Deleniti pertinacia eu est, te his soluta quaestio pericula illum vulputate lobortis facilisis.</p>
+                <p>We'd love to hear from you! Feel free to reach out to us.</p>
             </div>
-            <a href="https://www.facebook.com/profile.php?id=61566120625604&mibextid=ZbWKwL"
-               class="s-12 m-6 l-2 padding vertical-center margin-bottom facebook hover-zoom" target="_blank">
+            <a href="{{ services.facebook }}" class="s-12 m-6 l-2 padding vertical-center margin-bottom facebook hover-zoom" target="_blank" rel="noopener noreferrer">
                 <i class="icon-sli-social-facebook text-size-60 text-white center"></i>
             </a>
-            <a href="https://www.instagram.com/omegacomputerscuddalore?utm_source=qr&igsh=dDdmemRrZWIwNHV1"
-               class="s-12 m-6 l-2 padding vertical-center margin-bottom instagram hover-zoom" target="_blank">
+            <a href="{{ services.instagram }}" class="s-12 m-6 l-2 padding vertical-center margin-bottom instagram hover-zoom" target="_blank" rel="noopener noreferrer">
                 <i class="icon-sli-social-instagram text-size-60 text-white center"></i>
             </a>
-            <a href="/" class="s-12 m-6 l-2 padding vertical-center margin-bottom youtube hover-zoom" target="_blank">
+            <a href="/" class="s-12 m-6 l-2 padding vertical-center margin-bottom youtube hover-zoom" target="_blank" rel="noopener noreferrer">
                 <i class="icon-sli-social-youtube text-size-60 text-white center"></i>
             </a>
-            <a href="/" class="s-12 m-6 l-2 padding vertical-center margin-bottom linkedin hover-zoom" target="_blank">
-                <i class="icon-sli-social-linkedin text-size-60 text-white center"></i>
+            <a href="/" class="s-12 m-6 l-2 padding vertical-center margin-bottom linkedin hover-zoom" target="_blank" rel="noopener noreferrer">
+                <i class="icon-sli-social-google text-size-60 text-white center"></i>
             </a>
         </section>
-
     </main>
+
+    <script>
+        // Prevent right-click on all images
+        document.querySelectorAll('.responsive-image').forEach(img => {
+            img.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
 {% endblock %}

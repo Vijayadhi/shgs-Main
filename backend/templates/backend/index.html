@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SHGS</title>
+    <title>{{ services.service_title }}</title>
     <link rel="icon" href="{% static 'assets/logo/favico.jpeg' %}">
     {#    <link rel=>#}
     <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
@@ -19,30 +19,15 @@
     <script type="text/javascript" src="{% static 'assets/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
     <style>
-        .image-container {
-            position: relative;
-        }
 
         .image-container img {
             width: 100%;
             display: block;
+            padding: 10px;
+            border-radius: 10px;
+            border-color: white;
         }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Slight dark overlay */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
 
         .image-container:hover .overlay {
             opacity: 1;
@@ -52,31 +37,68 @@
             margin-bottom: 10px;
         }
 
-        .button.learn-more {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button.learn-more:hover {
-            background-color: #2980b9;
-        }
-
         .logo-container {
             display: flex;
             align-items: center;
         }
 
         .logo-container img {
-            margin-right: 15px; /* Space between image and text */
+            margin-right: 15px;
+            z-index: 99 /* Space between image and text */
         }
 
         .logo-container h2 {
             white-space: nowrap; /* Prevents text from breaking into multiple lines */
+        }
+
+        {#@media (max-width: 576px) {#}
+        {#    .logo-container h2{#}
+        {#        font-size: 150%;#}
+        {#        color: black;#}
+        {#    }#}
+        .logo {
+            font-size: 5vw; /* Scales with the viewport width */
+            font-weight: bolder;
+            margin-left: 15px;
+            margin-top: 35px;
+
+            white-space: nowrap;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Adjust font size and spacing for different screen sizes */
+        @media (max-width: 1200px) {
+            .logo {
+                font-size: 4.5vw; /* Smaller font size on medium screens */
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 4vw; /* Smaller font size for tablets */
+                margin-left: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 6vw; /* Increase size slightly for readability on small screens */
+                margin-left: 0;
+                line-height: 1.2; /* Adjust line height for mobile */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 7vw; /* Larger font for smaller mobile screens */
+                text-align: center; /* Center-align text on narrow screens */
+                margin-left: 0;
+                height: auto;
+                width: auto;
+            }
         }
 
 
@@ -101,13 +123,14 @@ You can use this class:
     <!-- Top Navigation -->
     <nav class="s-12 grid background-none background-primary-hightlight">
         <!-- logo -->
-        <a href="/" class="m-12 l-3 padding-2x logo-container" style="display: flex; align-items: center; text-decoration: none;">
-    <img src="{% static 'assets/logo/favico.jpeg' %}" style="width: 15vw; height: auto; max-width: 100px; border-radius: 35px;">
-    <h2 class="logo" style="font-size: 2.5vw; font-weight: bolder; margin-left: 15px; white-space: nowrap; color: white;">
-        SRI HAYAGIRIVA <span>&nbsp;GROUPS OF SERVICES</span>
-    </h2>
-</a>
-
+        <a href="/" class="m-12 l-3 padding-2x logo-container"
+           style="display: flex; align-items: center; text-decoration: none;">
+            <img src="{% static 'assets/logo/favico.jpeg' %}"
+                 style="width: 15vw; height: auto; max-width: 100px; border-radius: 35px;"><br>
+            <h2 class="logo">
+                {{ services.service_title }} </span>
+            </h2>
+        </a>
 
 
         <div class="top-nav s-12 l-9">
@@ -131,7 +154,7 @@ You can use this class:
 <footer class="grid">
     <!-- Footer - top -->
     <!-- Image-->
-    <div class="s-12 l-3 m-row-3 margin-bottom background-image"
+    <div class="s-12 l-3 m-row-3 margin-bottom background-image "
          style="background-image: url({% static 'assets/logo/lh.jpg' %});
                  height: 500px;
                  background-size: cover;
@@ -146,9 +169,7 @@ You can use this class:
 
     <div class="s-12 m-9 l-3 padding-2x margin-bottom background-dark">
         <h2 class="text-strong text-uppercase">Who We Are?</h2>
-        <p>Sri Hayagiriva Group of Services is your holistic partner, combining astrology, innovative software
-            solutions, housing loan assistance, real estate expertise, and personalized matrimony services. We are
-            dedicated to guiding you toward success and harmony in every aspect of life.</p>
+        {{ services.about | safe }}
     </div>
 
     <div class="s-12 m-9 l-3 padding-2x margin-bottom background-dark">
@@ -162,12 +183,14 @@ You can use this class:
 
     <div class="s-12 m-9 l-3 padding-2x margin-bottom background-dark">
         <h2 class="text-strong text-uppercase">Contact Us</h2>
-        <p><b class="text-primary margin-right-10">P</b> <a href="tel:9244222220" class="text-primary-hover">92442
-            22220</a></p>
-        <p><b class="text-primary margin-right-10">P</b> <a href="tel:9791958837" class="text-primary-hover">97919
-            58837</a></p>
+        <p><b class="text-primary margin-right-10">P</b> <a href="tel:{{ services.business_num1 }}"
+                                                            class="text-primary-hover">{{ services.business_num1 }}</a>
+        </p>
+        <p><b class="text-primary margin-right-10">P</b> <a href="tel:{{ services.business_num2 }}"
+                                                            class="text-primary-hover">{{ services.business_num2 }}</a>
+        </p>
         <p><b class="text-primary margin-right-10">M</b> <a class="text-primary-hover"
-                                                            href="mailto:srihayagirivainfotech@gmail.com">srihayagirivainfotech@gmail.com</a>
+                                                            href="mailto:{{ services.user.email }}">{{ services.user.email }}</a>
         </p>
         <p><b class="text-primary margin-right-10">M</b> <a class="text-primary-hover"
                                                             href="mailto:venerablevignesh@gmail.com">venerablevignesh@gmail.com</a>
@@ -186,6 +209,20 @@ You can use this class:
 <script type="text/javascript" src="{% static 'assets/js/responsee.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/owl-carousel/owl.carousel.js' %}"></script>
 <script type="text/javascript" src="{% static 'assets/js/template-scripts.js' %}"></script>
+<script>
+    // Prevent right-click on all images
+    document.querySelectorAll('.responsive-image').forEach(img => {
+        img.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+    });
+    {#document.addEventListener('contextmenu', event => event.preventDefault());#}
+    {#document.onkeydown = function (e) {#}
+    {#    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C'))) {#}
+    {#        return false;#}
+    {#    }#}
+    {#};#}
 
+</script>
 </body>
 </html>
